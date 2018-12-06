@@ -5,9 +5,9 @@ CREATE TABLE messages (
   id int NOT NULL,
   roomname varchar(255) NOT NULL,
   text varchar(255)
-  -- FOREIGN KEY (username) REFERENCES username(name),
-  -- FOREIGN KEY (roomname) REFERENCES roomname(roomname),
-  -- FOREIGN KEY (text) REFERENCES text(text)
+  FOREIGN KEY (username) REFERENCES username(name),
+  FOREIGN KEY (roomname) REFERENCES roomname(roomname),
+  FOREIGN KEY (text) REFERENCES text(text)
 );
 
 CREATE TABLE username (
