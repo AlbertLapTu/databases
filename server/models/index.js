@@ -5,24 +5,25 @@ var db = require('../db');
 module.exports = {
   messages: {
     get: function (callback) {
-      db.query('SELECT * FROM messages', function(err, res) {
+      db.query('SELECT * FROM messages', (err, res)=> {
         if (err) {
-          console.log('You have an error');
+          callback(err);
         } else {
-          callback(res.body);
+          console.log('hi from models');
+          callback(null, res);
         }
       })
     }, // a function which produces all the messages
     post: function (messageObject) {
       //will need to use a question mark in here in order to pass message in easier
       // without escaping within a string
-      db.query('INSERT INTO messages (message) VALUES( ? )'), [`${messageObject.message}`], function(err, res) {
-        if (err) {
-          console.log('You have an error');
-        } else {
-          callback(res.body);
-        }
-      }
+      // db.query('INSERT INTO messages (message) VALUES( ? )'), [`${messageObject.message}`], function(err, res) {
+      //   if (err) {
+      //     console.log('You have an error');
+      //   } else {
+      //     callback(res.body);
+      //   }
+      // }
     } 
   },
 
@@ -30,16 +31,24 @@ module.exports = {
     // Ditto as above.
     //We pass in a callback as a GET request is async. 
     get: function (callback) {
-      //Query the database using db.query('SQL COMMAND', queryArgs..?, callback(err, results));
-      db.query('SELECT users FROM messages', [], function(err,res){
-        if (err) {
-          console.log('You have an error');
-        } else {
-          callback(res.body);
-        }
-      })
+      //Clean this up and add in the ? for when you're looking at queries
+      // db.query('SELECT users FROM messages', function(err,res){
+      //   if (err) {
+      //     console.log('You have an error');
+      //   } else {
+      //     callback(res.body);
+      //   }
+      // })
     },
-    post: function (messageObject) {}
+    post: function (messageObject) {
+      // db.query('[INSERT SQL QUERY]', [], function(err, res) {
+      //   if (err) {
+      //     console.log('You have an error');
+      //   } else {
+      //     callback(res.body);
+      //   }
+      // })
+    }
   }
 };
 
