@@ -31,7 +31,7 @@ module.exports = {
         if (err) {
           console.log('This is an error');
         } else {//If the response is bad, do nothing
-        res.send(JSON.stringify(res.body));
+        res.send(JSON.stringify(req.body));
         }
     });
   },
