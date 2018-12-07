@@ -6,12 +6,14 @@ module.exports = {
       models.messages.get(function(err, results) { //ref the models file, the messages obj within it, and the get key 
         if (err) {
           console.log('This is an error!');
-        } //If the response is bad, do nothing 
-        JSON.stringify(res.body)   //else, if the response is good, run the callback
+        } else {//If the response is bad, do nothing 
+        res.sendStatus(200);
+        res.send(JSON.stringify(res.body));   //else, if the response is good, run the callback
+        }
       });
     }, 
-    post: function (req, res) {
-
+    post: function (callback) {
+      
     }
   },
   users: {
@@ -20,8 +22,10 @@ module.exports = {
       models.users.get(function(err, results) { //ref the models file, the messages obj within it, and the get key 
         if (err) {
           console.log('This is an error');
-        } //If the response is bad, do nothing 
-        JSON.stringify(res.body)
+        } else {//If the response is bad, do nothing
+        res.sendStatus(200);
+        res.send(JSON.stringify(res.body));
+        }
     });
   },
     post: function (req, res) {

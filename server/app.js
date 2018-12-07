@@ -10,7 +10,6 @@ var parser = require('body-parser');
 var router = require('./routes.js');
 
 //Read express apps to get a better understanding
-
 var app = express();
 
 //All of the express routing functions (look it up)
